@@ -18,7 +18,10 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(urlPatterns = {"/Registro"})
 public class Registro extends HttpServlet {
-    protected String nombre,apellidos,genero="";
+
+    protected String nombre, apellidos, genero, hombre, mujer, otro = "";
+    protected int dia, mes, anio=0;
+
     protected String generarPagina() {
         String pagina = "<!DOCTYPE html>\n"
                 + "<html>\n"
@@ -32,11 +35,11 @@ public class Registro extends HttpServlet {
                 + "            <h1>Datos Personales</h1>\n"
                 + "            <div id=\"nombre\">\n"
                 + "                <label for=\"nombre\">Nombre:</label>\n"
-                + "                <input type=\"text\" id=\"nombre\" value=\""+nombre+"\"/>\n"
+                + "                <input type=\"text\" id=\"nombre\" value=\"" + nombre + "\"/>\n"
                 + "            </div>\n"
                 + "            <div>   \n"
                 + "                <label for=\"nombre\">Apellidos:</label>\n"
-                + "                <input type=\"text\" id=\"apellidos\" value=\""+apellidos+"\"/>\n"
+                + "                <input type=\"text\" id=\"apellidos\" value=\"" + apellidos + "\"/>\n"
                 + "            </div>\n"
                 + "            <div>\n"
                 + "                <label for=\"mail\">E-mail:</label>\n"
@@ -44,13 +47,94 @@ public class Registro extends HttpServlet {
                 + "            </div>\n"
                 + "            <div>\n"
                 + "                Sexo:<br>\n"
-                + "                <input type=\"radio\" name=\"genero\" value=\"hombre\"> Hombre\n"
-                + "                <input type=\"radio\" name=\"genero\" value=\"mujer\"> Mujer\n"
-                + "                <input type=\"radio\" name=\"genero\" value=\"otro\"> Otro\n"
+                + "                <input type=\"radio\" name=\"genero\" value=\"hombre\" " + hombre + "> Hombre\n"
+                + "                <input type=\"radio\" name=\"genero\" value=\"mujer\" " + mujer + "> Mujer\n"
+                + "                <input type=\"radio\" name=\"genero\" value=\"otro\" " + otro + "> Otro\n"
                 + "            </div>\n"
-                + "            <!--<div>\n"
-                + "                Fecha:<input type=\"date\">\n"
-                + "            </div>-->\n"
+                + "            <div>\n"
+                + "                Fecha:\n"
+                + "                <select>\n"
+                + "                    <option value=\"1\">1</option>\n"
+                + "                    <option value=\"2\">2</option>\n"
+                + "                    <option value=\"3\">3</option>\n"
+                + "                    <option value=\"4\">4</option>\n"
+                + "                    <option value=\"5\">5</option>\n"
+                + "                    <option value=\"6\">6</option>\n"
+                + "                    <option value=\"7\">7</option>\n"
+                + "                    <option value=\"8\">8</option>\n"
+                + "                    <option value=\"9\">9</option>\n"
+                + "                    <option value=\"10\">10</option>\n"
+                + "                    <option value=\"11\">11</option>\n"
+                + "                    <option value=\"12\">12</option>\n"
+                + "                    <option value=\"13\">13</option>\n"
+                + "                    <option value=\"14\">14</option>\n"
+                + "                    <option value=\"15\">15</option>\n"
+                + "                    <option value=\"16\">16</option>\n"
+                + "                    <option value=\"17\">17</option>\n"
+                + "                    <option value=\"18\">18</option>\n"
+                + "                    <option value=\"19\">19</option>\n"
+                + "                    <option value=\"20\">20</option>\n"
+                + "                    <option value=\"21\">21</option>\n"
+                + "                    <option value=\"22\">22</option>\n"
+                + "                    <option value=\"23\">23</option>\n"
+                + "                    <option value=\"24\">24</option>\n"
+                + "                    <option value=\"25\">25</option>\n"
+                + "                    <option value=\"26\">26</option>\n"
+                + "                    <option value=\"27\">27</option>\n"
+                + "                    <option value=\"28\">28</option>\n"
+                + "                    <option value=\"29\">29</option>\n"
+                + "                    <option value=\"30\">30</option>\n"
+                + "                    <option value=\"31\">31</option>\n"
+                + "                </select> \n"
+                + "                <select>\n"
+                + "                    <option value=\"01\">01</option>\n"
+                + "                    <option value=\"02\">02</option>\n"
+                + "                    <option value=\"03\">03</option>\n"
+                + "                    <option value=\"04\">04</option>\n"
+                + "                    <option value=\"05\">05</option>\n"
+                + "                    <option value=\"06\">06</option>\n"
+                + "                    <option value=\"07\">07</option>\n"
+                + "                    <option value=\"08\">08</option>\n"
+                + "                    <option value=\"09\">09</option>\n"
+                + "                    <option value=\"10\">10</option>\n"
+                + "                    <option value=\"11\">11</option>\n"
+                + "                    <option value=\"12\">12</option>\n"
+                + "                </select> \n"
+                + "                <select>\n"
+                + "                    <option value=\"1970\">1970</option>\n"
+                + "                    <option value=\"1971\">1971</option>\n"
+                + "                    <option value=\"1972\">1972</option>\n"
+                + "                    <option value=\"1973\">1973</option>\n"
+                + "                    <option value=\"1974\">1974</option>\n"
+                + "                    <option value=\"1975\">1975</option>\n"
+                + "                    <option value=\"1976\">1976</option>\n"
+                + "                    <option value=\"1977\">1977</option>\n"
+                + "                    <option value=\"1978\">1978</option>\n"
+                + "                    <option value=\"1979\">1979</option>\n"
+                + "                    <option value=\"1980\">1980</option>\n"
+                + "                    <option value=\"1981\">1981</option>\n"
+                + "                    <option value=\"1982\">1982</option>\n"
+                + "                    <option value=\"1983\">1983</option>\n"
+                + "                    <option value=\"1984\">1984</option>\n"
+                + "                    <option value=\"1985\">1985</option>\n"
+                + "                    <option value=\"1986\">1986</option>\n"
+                + "                    <option value=\"1987\">1987</option>\n"
+                + "                    <option value=\"1988\">1988</option>\n"
+                + "                    <option value=\"1989\">1989</option>\n"
+                + "                    <option value=\"1990\">1990</option>\n"
+                + "                    <option value=\"1991\">1991</option>\n"
+                + "                    <option value=\"1992\">1992</option>\n"
+                + "                    <option value=\"1993\">1993</option>\n"
+                + "                    <option value=\"1994\">1994</option>\n"
+                + "                    <option value=\"1995\">1995</option>\n"
+                + "                    <option value=\"1996\">1996</option>\n"
+                + "                    <option value=\"1997\">1997</option>\n"
+                + "                    <option value=\"1998\">1998</option>\n"
+                + "                    <option value=\"1999\">1999</option>\n"
+                + "                    <option value=\"2000\">2000</option>\n"
+                + "                    <option value=\""+anio+"\">"+anio+"</option>\n"
+                + "                </select> \n"
+                + "            </div>\n"
                 + "            <div class=\"button\">\n"
                 + "                <button type=\"submit\">Enviar</button>\n"
                 + "                <button type=\"reset\">Cancelar</button>\n"
@@ -60,8 +144,15 @@ public class Registro extends HttpServlet {
                 + "</html>";
         return pagina;
     }
-    protected void adivinarGenero(){
-        
+
+    protected void adivinarGenero() {
+        if (genero.equals("Hombre")) {
+            hombre = "checked=\"\"";
+        } else if (genero.equals("Mujer")) {
+            mujer = "checked=\"\"";
+        } else {
+            otro = "checked=\"\"";
+        }
     }
 
     /**
@@ -80,8 +171,10 @@ public class Registro extends HttpServlet {
             response.setContentType("text/html;charset=UTF-8");
             try (PrintWriter out = response.getWriter()) {
                 nombre = request.getParameter("nombre");
-                apellidos=request.getParameter("apellidos");
-                genero=request.getParameter("genero");
+                apellidos = request.getParameter("apellidos");
+                genero = request.getParameter("genero");
+                adivinarGenero();
+                //dia=request.getParameter("dia");
                 out.println(generarPagina());
             }
         }
