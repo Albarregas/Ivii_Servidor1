@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form  id="form" action="../Registro" method="post">
+            <h1>Datos Personales</h1>
+            <div id="nombre">
+                <label for="nombre">Nombre:</label>
+                <input type="text" name="nombre" value="Nombre"/>
+            </div>
+            <div>   
+                <label for="nombre">Apellidos:</label>
+                <input type="text" name="apellidos" value="Apellidos"/>
+            </div>
+            <div>
+                <label for="mail">E-mail:</label>
+                <input type="email" name="mail" />
+            </div>
+            <div>
+                Sexo:<br>
+                <input type="radio" name="genero" value="hombre" checked=""> Hombre
+                <input type="radio" name="genero" value="mujer"> Mujer
+                <input type="radio" name="genero" value="otro"> Otro
+            </div>
+            <!--<div>
+                Fecha:<input type="date">
+            </div>-->
+            <div class="button">
+                <button type="submit">Enviar</button>
+                <button type="reset">Cancelar</button>
+            </div>
+        </form>
+    </body>
+</html>
