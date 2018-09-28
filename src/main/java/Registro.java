@@ -18,11 +18,10 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(urlPatterns = {"/Registro"})
 public class Registro extends HttpServlet {
-
-    protected String nombre, apellidos, genero, hombre, mujer, otro = "";
-    protected int dia, mes, anio=0;
-
+    protected String nombre, apellidos, hombre, mujer, otro = "";
+    protected int dia, mes, anio = 0;
     protected String generarPagina() {
+        
         String pagina = "<!DOCTYPE html>\n"
                 + "<html>\n"
                 + "    <head>\n"
@@ -132,7 +131,7 @@ public class Registro extends HttpServlet {
                 + "                    <option value=\"1998\">1998</option>\n"
                 + "                    <option value=\"1999\">1999</option>\n"
                 + "                    <option value=\"2000\">2000</option>\n"
-                + "                    <option value=\""+anio+"\">"+anio+"</option>\n"
+                + "                    <option value=\"" + anio + "\" selected=\"selected\">" + anio + "</option>\n"
                 + "                </select> \n"
                 + "            </div>\n"
                 + "            <div class=\"button\">\n"
@@ -145,10 +144,10 @@ public class Registro extends HttpServlet {
         return pagina;
     }
 
-    protected void adivinarGenero() {
-        if (genero.equals("Hombre")) {
+    protected void adivinarGenero(String genero) {
+        if (genero.equals("hombre")) {
             hombre = "checked=\"\"";
-        } else if (genero.equals("Mujer")) {
+        } else if (genero.equals("mujer")) {
             mujer = "checked=\"\"";
         } else {
             otro = "checked=\"\"";
@@ -168,12 +167,14 @@ public class Registro extends HttpServlet {
             throws ServletException, IOException {
         boolean on = true;
         while (on) {
+            
             response.setContentType("text/html;charset=UTF-8");
             try (PrintWriter out = response.getWriter()) {
                 nombre = request.getParameter("nombre");
                 apellidos = request.getParameter("apellidos");
-                genero = request.getParameter("genero");
-                adivinarGenero();
+                String genero = request.getParameter("genero");
+                int dia=Integer.parseInt(request.getParameter("dia"));
+                adivinarGenero(genero);
                 //dia=request.getParameter("dia");
                 out.println(generarPagina());
             }
