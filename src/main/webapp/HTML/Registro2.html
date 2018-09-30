@@ -6,29 +6,24 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <form  id="form" action="../Registro2" method="post">
+        <form  id="form" action="../Registro" method="post">
             <h1>Datos Personales</h1>
             <div id="nombre">
                 <label for="nombre">Nombre:</label>
-                <input type="text" name="nombre" value="Nombre"/>
+                <input type="text" name="Nombre" value="" placeholder="Nombre"/>
             </div>
             <div>   
                 <label for="nombre">Apellidos:</label>
-                <input type="text" name="apellidos" value="Apellidos"/>
-            </div>
-            <div>
-                <label for="mail">E-mail:</label>
-                <input type="email" name="mail" />
+                <input type="text" name="Apellidos" value="" placeholder="Apellidos"/>
             </div>
             <div>
                 Sexo:<br>
-                <input type="radio" name="genero" value="hombre" checked=""> Hombre
-                <input type="radio" name="genero" value="mujer"> Mujer
-                <input type="radio" name="genero" value="otro"> Otro
+                <input type="radio" name="Genero" value="hombre" checked=""> Hombre
+                <input type="radio" name="Genero" value="mujer"> Mujer
             </div>
             <div>
                 Fecha:
-                <select>
+                <select name="Dia">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -61,21 +56,21 @@
                     <option value="30">30</option>
                     <option value="31">31</option>
                 </select> 
-                <select>
-                    <option value="01">01</option>
-                    <option value="02">02</option>
-                    <option value="03">03</option>
-                    <option value="04">04</option>
-                    <option value="05">05</option>
-                    <option value="06">06</option>
-                    <option value="07">07</option>
-                    <option value="08">08</option>
-                    <option value="09">09</option>
+                <select name="Mes">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
                     <option value="10">10</option>
                     <option value="11">11</option>
                     <option value="12">12</option>
                 </select> 
-                <select name="anios">
+                <select name="Anios">
                     <option value="1970">1970</option>
                     <option value="1971">1971</option>
                     <option value="1972">1972</option>
@@ -109,9 +104,19 @@
                     <option value="2000" selected="">2000</option>
                 </select> 
             </div>
+            <h1>Datos de acceso</h1>
+            <label for="usuario">Usuario  <input id="usuario" type="text" name="Usuario"></label><br>
+            <label for="pass">Contraseña  <input id="pass" type="password" name="Password"></label>
+            <h1>Informacion General</h1>
+            <div>
+                <input type="checkbox" name="Preferencia" value="Deportes"> Deportes<br>
+                <input type="checkbox" name="Preferencia" value="Lectura"> Lectura<br>
+                <input type="checkbox" name="Preferencia" value="Compras"> Compras<br>
+                <input type="checkbox" name="Preferencia" value="Cocinar"> Cocinar
+            </div><br>
             <div class="button">
-                <button type="submit">Enviar</button>
-                <button type="reset">Cancelar</button>
+                <input type="submit" name="Enviar" value="Enviar">
+                <input type="reset" name="reset" value="Limpiar">
             </div>
         </form>
     </body>

@@ -6,6 +6,10 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,149 +18,103 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Daw2
+ * @author ivan9
  */
 @WebServlet(urlPatterns = {"/Registro"})
 public class Registro extends HttpServlet {
-    protected String nombre, apellidos, hombre, mujer, otro = "";
-    protected int dia, mes, anio = 0;
-    protected String generarPagina() {
-        
-        String pagina = "<!DOCTYPE html>\n"
-                + "<html>\n"
-                + "    <head>\n"
-                + "        <title>TODO supply a title</title>\n"
-                + "        <meta charset=\"UTF-8\">\n"
-                + "        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
-                + "    </head>\n"
-                + "    <body>\n"
-                + "        <form  id=\"form\" action=\"../Registro\" method=\"post\">\n"
-                + "            <h1>Datos Personales</h1>\n"
-                + "            <div id=\"nombre\">\n"
-                + "                <label for=\"nombre\">Nombre:</label>\n"
-                + "                <input type=\"text\" id=\"nombre\" value=\"" + nombre + "\"/>\n"
-                + "            </div>\n"
-                + "            <div>   \n"
-                + "                <label for=\"nombre\">Apellidos:</label>\n"
-                + "                <input type=\"text\" id=\"apellidos\" value=\"" + apellidos + "\"/>\n"
-                + "            </div>\n"
-                + "            <div>\n"
-                + "                <label for=\"mail\">E-mail:</label>\n"
-                + "                <input type=\"email\" id=\"mail\" />\n"
-                + "            </div>\n"
-                + "            <div>\n"
-                + "                Sexo:<br>\n"
-                + "                <input type=\"radio\" name=\"genero\" value=\"hombre\" " + hombre + "> Hombre\n"
-                + "                <input type=\"radio\" name=\"genero\" value=\"mujer\" " + mujer + "> Mujer\n"
-                + "                <input type=\"radio\" name=\"genero\" value=\"otro\" " + otro + "> Otro\n"
-                + "            </div>\n"
-                + "            <div>\n"
-                + "                Fecha:\n"
-                + "                <select>\n"
-                + "                    <option value=\"1\">1</option>\n"
-                + "                    <option value=\"2\">2</option>\n"
-                + "                    <option value=\"3\">3</option>\n"
-                + "                    <option value=\"4\">4</option>\n"
-                + "                    <option value=\"5\">5</option>\n"
-                + "                    <option value=\"6\">6</option>\n"
-                + "                    <option value=\"7\">7</option>\n"
-                + "                    <option value=\"8\">8</option>\n"
-                + "                    <option value=\"9\">9</option>\n"
-                + "                    <option value=\"10\">10</option>\n"
-                + "                    <option value=\"11\">11</option>\n"
-                + "                    <option value=\"12\">12</option>\n"
-                + "                    <option value=\"13\">13</option>\n"
-                + "                    <option value=\"14\">14</option>\n"
-                + "                    <option value=\"15\">15</option>\n"
-                + "                    <option value=\"16\">16</option>\n"
-                + "                    <option value=\"17\">17</option>\n"
-                + "                    <option value=\"18\">18</option>\n"
-                + "                    <option value=\"19\">19</option>\n"
-                + "                    <option value=\"20\">20</option>\n"
-                + "                    <option value=\"21\">21</option>\n"
-                + "                    <option value=\"22\">22</option>\n"
-                + "                    <option value=\"23\">23</option>\n"
-                + "                    <option value=\"24\">24</option>\n"
-                + "                    <option value=\"25\">25</option>\n"
-                + "                    <option value=\"26\">26</option>\n"
-                + "                    <option value=\"27\">27</option>\n"
-                + "                    <option value=\"28\">28</option>\n"
-                + "                    <option value=\"29\">29</option>\n"
-                + "                    <option value=\"30\">30</option>\n"
-                + "                    <option value=\"31\">31</option>\n"
-                + "                </select> \n"
-                + "                <select>\n"
-                + "                    <option value=\"01\">01</option>\n"
-                + "                    <option value=\"02\">02</option>\n"
-                + "                    <option value=\"03\">03</option>\n"
-                + "                    <option value=\"04\">04</option>\n"
-                + "                    <option value=\"05\">05</option>\n"
-                + "                    <option value=\"06\">06</option>\n"
-                + "                    <option value=\"07\">07</option>\n"
-                + "                    <option value=\"08\">08</option>\n"
-                + "                    <option value=\"09\">09</option>\n"
-                + "                    <option value=\"10\">10</option>\n"
-                + "                    <option value=\"11\">11</option>\n"
-                + "                    <option value=\"12\">12</option>\n"
-                + "                </select> \n"
-                + "                <select>\n"
-                + "                    <option value=\"1970\">1970</option>\n"
-                + "                    <option value=\"1971\">1971</option>\n"
-                + "                    <option value=\"1972\">1972</option>\n"
-                + "                    <option value=\"1973\">1973</option>\n"
-                + "                    <option value=\"1974\">1974</option>\n"
-                + "                    <option value=\"1975\">1975</option>\n"
-                + "                    <option value=\"1976\">1976</option>\n"
-                + "                    <option value=\"1977\">1977</option>\n"
-                + "                    <option value=\"1978\">1978</option>\n"
-                + "                    <option value=\"1979\">1979</option>\n"
-                + "                    <option value=\"1980\">1980</option>\n"
-                + "                    <option value=\"1981\">1981</option>\n"
-                + "                    <option value=\"1982\">1982</option>\n"
-                + "                    <option value=\"1983\">1983</option>\n"
-                + "                    <option value=\"1984\">1984</option>\n"
-                + "                    <option value=\"1985\">1985</option>\n"
-                + "                    <option value=\"1986\">1986</option>\n"
-                + "                    <option value=\"1987\">1987</option>\n"
-                + "                    <option value=\"1988\">1988</option>\n"
-                + "                    <option value=\"1989\">1989</option>\n"
-                + "                    <option value=\"1990\">1990</option>\n"
-                + "                    <option value=\"1991\">1991</option>\n"
-                + "                    <option value=\"1992\">1992</option>\n"
-                + "                    <option value=\"1993\">1993</option>\n"
-                + "                    <option value=\"1994\">1994</option>\n"
-                + "                    <option value=\"1995\">1995</option>\n"
-                + "                    <option value=\"1996\">1996</option>\n"
-                + "                    <option value=\"1997\">1997</option>\n"
-                + "                    <option value=\"1998\">1998</option>\n"
-                + "                    <option value=\"1999\">1999</option>\n"
-                + "                    <option value=\"2000\">2000</option>\n"
-                + "                    <option value=\"" + anio + "\" selected=\"selected\">" + anio + "</option>\n"
-                + "                </select> \n"
-                + "            </div>\n"
-                + "            <div class=\"button\">\n"
-                + "                <button type=\"submit\">Enviar</button>\n"
-                + "                <button type=\"reset\">Cancelar</button>\n"
-                + "            </div>\n"
-                + "        </form>\n"
-                + "    </body>\n"
-                + "</html>";
-        return pagina;
+
+    protected String mostrarDatos(Map datos) {
+        Set se = datos.keySet();
+        StringBuilder sb = new StringBuilder();
+        String[] meses = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
+        sb.append("<h1>Datos Guardados</h1>");
+        for (Iterator iterator = se.iterator(); iterator.hasNext();) {
+            String dato = (String) iterator.next();
+            String resultado[] = (String[]) datos.get(dato);
+
+            if (!dato.equals("Enviar") && !dato.equals("Dia") && !dato.equals("Mes") && !dato.equals("Anios")) {
+                sb.append("<p>");
+                sb.append(dato);
+                sb.append(": ");
+
+                for (int i = 0; i < resultado.length; i++) {
+
+                    if (i > 0) {
+                        sb.append(",");
+                        sb.append(resultado[i]);
+                    } else {
+                        sb.append(resultado[i]);
+                    }
+                }
+
+                sb.append("</p>");
+            }
+            if (dato.equals("Dia")) {
+                sb.append("<p>Fecha de nacimiento: ");
+                sb.append(resultado[0]);
+                sb.append(" de ");
+            } else if (dato.equals("Mes")) {
+                sb.append(meses[Integer.parseInt(resultado[0]) - 1]);
+                sb.append(" de ");
+            } else if (dato.equals("Anios")) {
+                sb.append(resultado[0]);
+                sb.append("</p>");
+            }
+
+        }
+        return sb.toString();
     }
 
-    protected void adivinarGenero(String genero) {
-        if (genero.equals("hombre")) {
-            hombre = "checked=\"\"";
-        } else if (genero.equals("mujer")) {
-            mujer = "checked=\"\"";
-        } else {
-            otro = "checked=\"\"";
+
+    protected ArrayList<String> consultarErrores(Map datos) {
+        Set se = datos.keySet();
+        ArrayList<String> errores = new ArrayList<String>();
+        int dia = 0, mes = 0, anio = 0;
+        int i = 0;
+        for (Iterator iterator = se.iterator(); iterator.hasNext();) {
+            String dato = (String) iterator.next();
+            String resultado[] = (String[]) datos.get(dato);
+            if (resultado[0].equals("")) {
+                errores.add(dato);
+            }
+            if (dato.equals("dia")) {
+                dia = Integer.parseInt(resultado[0]);
+            }
+            if (dato.equals("mes")) {
+                mes = Integer.parseInt(resultado[0]) - 1;
+            }
+            if (dato.equals("anio")) {
+                anio = Integer.parseInt(resultado[0]);
+            }
+            i++;
         }
+        if (!consultarFecha(dia, mes, anio)) {
+            errores.add("fecha");
+        }
+        return errores;
+    }
+
+    protected boolean consultarFecha(int dia, int mes, int anio) {
+        boolean diaCorrecto = false;
+        int[] diaMeses = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+        if ((anio % 4 == 0) && (anio % 100 != 0)) {
+            diaMeses[1] = 29;
+        }
+
+        if (diaMeses[mes] > dia) {
+            diaCorrecto = true;
+        }
+        diaMeses[1] = 28;
+        return diaCorrecto;
     }
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
+     * methods. ArrayList<String> errores = consultarErrores(datos); for (Object
+     * object : errores) { out.print("
+     * <p>
+     * " + object + "</p>"); } datos.get("dia"); se sacaria el dia
      *
      * @param request servlet request
      * @param response servlet response
@@ -165,19 +123,114 @@ public class Registro extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        boolean on = true;
-        while (on) {
-            
-            response.setContentType("text/html;charset=UTF-8");
-            try (PrintWriter out = response.getWriter()) {
-                nombre = request.getParameter("nombre");
-                apellidos = request.getParameter("apellidos");
-                String genero = request.getParameter("genero");
-                int dia=Integer.parseInt(request.getParameter("dia"));
-                adivinarGenero(genero);
-                //dia=request.getParameter("dia");
-                out.println(generarPagina());
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            String correcto = "Correcto";
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet Registro</title>");
+            out.println("</head>");
+            out.println("<body>");
+            Map<String, String[]> datos = request.getParameterMap();
+            ArrayList<String> errores = consultarErrores(datos);
+            if (errores.isEmpty()) {
+                String url = "<a href=\"" + request.getContextPath() + "\"><button>Volver</button></a>";
+                out.println(mostrarDatos(datos) + url);
+
+            } else {
+                out.println("<form  id=\"form\" action=\"Registro\" method=\"post\">\n"
+                        + "            <h1>Datos Personales</h1>\n"
+                        + "            <div id=\"nombre\">\n"
+                        + "                <label for=\"nombre\">Nombre:</label>\n");
+                if (errores.contains("Nombre")) {
+                    correcto = "X";
+                }
+                out.println("              <input type=\"text\" name=\"Nombre\" value=\"" + request.getParameter("Nombre") + "\"/>" + correcto + "\n"
+                        + "            </div>\n"
+                        + "            <div>\n"
+                        + "                <label for=\"nombre\">Apellidos:</label>\n"
+                        + "                <input type=\"text\" name=\"Apellidos\" value=\"" + request.getParameter("Apellidos") + "\"/>\n"
+                        + "            </div>");
+                String H = "", M = "";
+                if (request.getParameter("Genero").equals("hombre")) {
+                    H = "checked";
+                } else {
+                    M = "checked";
+                }
+                out.println("<div>\n"
+                        + "                Sexo:<br>\n"
+                        + "                <input type=\"radio\" name=\"Genero\" value=\"hombre\" " + H + "> Hombre\n"
+                        + "                <input type=\"radio\" name=\"Genero\" value=\"mujer\"" + M + "> Mujer\n"
+                        + "            </div>");
+                out.println("<div>\n"
+                        + "                Fecha:\n"
+                        + "                <select name=\"Dia\">");
+                for (int i = 1; i <= 31; i++) {
+                    if (Integer.parseInt(request.getParameter("Dia")) == i) {
+                        out.println("<option value=\"" + i + "\" selected>" + i + "</option>");
+                    } else {
+                        out.println("<option value=\"" + i + "\">" + i + "</option>");
+                    }
+                }
+                out.println("</select> \n"
+                        + "                <select name=\"Mes\">");
+                for (int i = 1; i <= 12; i++) {
+                    if (Integer.parseInt(request.getParameter("Mes")) == i) {
+                        out.println("<option value=\"" + i + "\" selected>" + i + "</option>");
+                    } else {
+                        out.println("<option value=\"" + i + "\">" + i + "</option>");
+                    }
+                }
+                out.println("</select> \n"
+                        + "                <select name=\"Anios\">");
+                for (int i = 1970; i <= 2000; i++) {
+                    if (Integer.parseInt(request.getParameter("Anios")) == i) {
+                        out.println("<option value=\"" + i + "\" selected>" + i + "</option>");
+                    } else {
+                        out.println("<option value=\"" + i + "\">" + i + "</option>");
+                    }
+                }
+                out.println("  </select> \n"
+                        + "            </div>\n"
+                        + "            <h1>Datos de acceso</h1>\n");
+                correcto = "Correcto";
+                if (errores.contains("Usuario")) {
+                    correcto = "X";
+
+                }
+                out.println("<label for=\"usuario\">Usuario  <input id=\"usuario\" type=\"text\" name=\"Usuario\" value=\"" + request.getParameter("Usuario") + "\">" + correcto + "</label><br>");
+                correcto = "Correcto";
+                if (errores.contains("Password")) {
+                    correcto = "X";
+                }
+                out.println("<label for=\"pass\">Contraseña  <input id=\"pass\" type=\"password\" name=\"Password\" value=\"" + request.getParameter("Password") + "\">" + correcto + "</label>\n"
+                        + "            <h1>Informacion General</h1>\n"
+                        + "            <div>");
+
+                String[] prefMarcadas = datos.get("Preferencia");
+                String[] preferencias = {"Deportes", "Lectura", "Compras", "Cocinar"};
+
+                for (int i = 0; i < preferencias.length; i++) {
+                    out.println("<input type=\"checkbox\" name=\"Preferencia\" value=\"" + preferencias[i] + "\"");
+                    if (prefMarcadas != null) {
+                        for (int j = 0; j < prefMarcadas.length; j++) {
+                            if (preferencias[i].equals(prefMarcadas[j])) {
+                                out.println("checked");
+                            }
+                        }
+                    }
+                    out.println("> " + preferencias[i] + "<br>");
+                }
+                out.println("<div class=\"button\">\n"
+                        + "                <input type=\"submit\" name=\"Enviar\" value=\"Enviar\">\n"
+                        + "                <a href=\"Registro.html\"><button>Limpiar</button></a>\n"
+                        + "            </div>");
+                out.println("</form>");
             }
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 
