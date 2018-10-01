@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author ivan9
  */
-@WebServlet(urlPatterns = {"/Registro"})
+@WebServlet(urlPatterns = {"/Registro2"})
 public class Registro2 extends HttpServlet {
 
     protected String mostrarDatos(Map datos) {
