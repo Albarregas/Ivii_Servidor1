@@ -65,7 +65,6 @@ public class Registro extends HttpServlet {
         return sb.toString();
     }
 
-
     protected ArrayList<String> consultarErrores(Map datos) {
         Set se = datos.keySet();
         ArrayList<String> errores = new ArrayList<String>();
@@ -77,18 +76,18 @@ public class Registro extends HttpServlet {
             if (resultado[0].equals("")) {
                 errores.add(dato);
             }
-            if (dato.equals("dia")) {
+            if (dato.equals("Dia")) {
                 dia = Integer.parseInt(resultado[0]);
             }
-            if (dato.equals("mes")) {
-                mes = Integer.parseInt(resultado[0]) - 1;
+            if (dato.equals("Mes")) {
+                mes = Integer.parseInt(resultado[0])-1;
             }
-            if (dato.equals("anio")) {
+            if (dato.equals("Anios")) {
                 anio = Integer.parseInt(resultado[0]);
             }
             i++;
         }
-        if (!consultarFecha(dia, mes, anio)) {
+        if (consultarFecha(dia, mes, anio)==false) {
             errores.add("fecha");
         }
         return errores;
@@ -101,8 +100,8 @@ public class Registro extends HttpServlet {
         if ((anio % 4 == 0) && (anio % 100 != 0)) {
             diaMeses[1] = 29;
         }
-
-        if (diaMeses[mes] > dia) {
+        
+        if (diaMeses[mes] >= dia) {
             diaCorrecto = true;
         }
         diaMeses[1] = 28;
@@ -167,6 +166,10 @@ public class Registro extends HttpServlet {
                 out.println("<div>\n"
                         + "                Fecha:\n"
                         + "                <select name=\"Dia\">");
+                correcto="Correcto";
+                if (errores.contains("fecha")) {
+                    correcto="X";
+                }
                 for (int i = 1; i <= 31; i++) {
                     if (Integer.parseInt(request.getParameter("Dia")) == i) {
                         out.println("<option value=\"" + i + "\" selected>" + i + "</option>");
@@ -192,7 +195,8 @@ public class Registro extends HttpServlet {
                         out.println("<option value=\"" + i + "\">" + i + "</option>");
                     }
                 }
-                out.println("  </select> \n"
+
+                out.println("  </select>" + correcto + " \n"
                         + "            </div>\n"
                         + "            <h1>Datos de acceso</h1>\n");
                 correcto = "Correcto";
