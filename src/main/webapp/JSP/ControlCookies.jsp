@@ -9,7 +9,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    String mensaje = null;
+    String mensaje = "";
     String nombre = request.getParameter("Nombre");
     String valor=request.getParameter("Valor");
     Cookie cookie = null;
@@ -24,33 +24,37 @@
     }
     if(request.getParameter("Enviar").equals("Crear")){
         if(cookies!=null){
-            cookie=new Cookie(nombre,valor);
+            cookie=new Cookie(nombre,request.getParameter("Valor"));
             cookie.setMaxAge(60*60);
             response.addCookie(cookie);
-            mensaje="Cookie creada | Nombre: "+cookie.getName()+" | Valor: "+cookie.getValue();
+            mensaje="Nombre:"+cookie.getName()+" Valor: "+cookie.getValue();
             
         }else{
             mensaje="Cookie no creada";
         }
     }else if(request.getParameter("Enviar").equals("Visualizar")){
-        if(cookies==null){
-            cookie=new Cookie(nombre,request.getParameter("valor"));
+        if(cookies!=null){
+            cookie=new Cookie(nombre,cookie.getValue());
             mensaje="La cookie: "+cookie.getName()+" tiene de valor: "+cookie.getValue();
-            
+        }else{
+            mensaje="La cookie no existe";
         }
     }else if(request.getParameter("Enviar").equals("Modificar")){
-        if(cookies==null){
-            cookie=new Cookie(nombre,request.getParameter("valor"));
-            
-            
+        if(cookies!=null){
+            cookie.setValue(valor);
+            mensaje="Nombre:"+cookie.getName()+" Valor: "+cookie.getValue();
+        }else{
+            mensaje="La cookie no existe";
         }
     }else if(request.getParameter("Enviar").equals("Eliminar")){
-        if(cookies==null){
-            cookie=new Cookie(nombre,request.getParameter("valor"));
-            
-            
+        if(cookies!=null){
+            cookie.setMaxAge(0);
+            mensaje="La cookie se a eliminado";
+        }else{
+            mensaje="La cookie no existe";
         }
     }
+    mensaje.replace(" ","%20");
     response.sendRedirect("InterfazCookies.jsp?mensaje="+mensaje);
 %>
 
