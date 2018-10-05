@@ -40,5 +40,6 @@
              <% out.println(saludo+" "+tratamiento+" "+request.getParameter("Nombre")); %> 
              
          </h1>
+             <a href="<%= request.getContextPath()%>"><input type="submit" name="Enviar" value="Volver"></a>
     </body>
 </html>

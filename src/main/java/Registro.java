@@ -229,7 +229,7 @@ public class Registro extends HttpServlet {
                 }
                 out.println("<div class=\"button\">\n"
                         + "                <input type=\"submit\" name=\"Enviar\" value=\"Enviar\">\n"
-                        + "                <a href=\"Registro.html\"><button>Limpiar</button></a>\n"
+                        + "                <a href=\"./Registro.java\"><button>Limpiar</button></a>\n"
                         + "            </div>");
                 out.println("</form>");
             }

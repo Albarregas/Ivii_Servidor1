@@ -34,7 +34,7 @@
                     <input type="submit" name="Enviar" value="Eliminar">
                 </p>
                 <p>
-                    <input type="submit" name="Enviar" value="Enviar">
+                    <a href="<%= request.getContextPath()%>"><input type="submit" name="Enviar" value="Volver"></a>
                 </p>
 
 

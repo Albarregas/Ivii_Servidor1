@@ -23,7 +23,7 @@
         }
     }
     if(request.getParameter("Enviar").equals("Crear")){
-        if(cookies!=null){
+        if(cookies==null){
             cookie=new Cookie(nombre,request.getParameter("Valor"));
             cookie.setMaxAge(60*60);
             response.addCookie(cookie);
@@ -34,7 +34,7 @@
         }
     }else if(request.getParameter("Enviar").equals("Visualizar")){
         if(cookies!=null){
-            cookie=new Cookie(nombre,cookie.getValue());
+            //cookie=new Cookie(nombre,cookie.getValue());
             mensaje="La cookie: "+cookie.getName()+" tiene de valor: "+cookie.getValue();
         }else{
             mensaje="La cookie no existe";
@@ -42,6 +42,7 @@
     }else if(request.getParameter("Enviar").equals("Modificar")){
         if(cookies!=null){
             cookie.setValue(valor);
+            response.addCookie(cookie);
             mensaje="Nombre:"+cookie.getName()+" Valor: "+cookie.getValue();
         }else{
             mensaje="La cookie no existe";
