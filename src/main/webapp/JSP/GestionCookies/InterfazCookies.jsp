@@ -34,11 +34,12 @@
                     <input type="submit" name="Enviar" value="Eliminar">
                 </p>
                 <p>
-                    <a href="<%= request.getContextPath()%>"><input type="submit" name="Enviar" value="Volver"></a>
+                    
                 </p>
 
 
             </div>
         </form>
+                <a href="<%= request.getContextPath()%>"><input type="submit" name="Enviar" value="Volver"></a>
     </body>
 </html>

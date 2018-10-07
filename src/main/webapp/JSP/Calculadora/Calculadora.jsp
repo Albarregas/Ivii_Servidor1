@@ -1,7 +1,7 @@
 <%-- 
     Document   : calculadora
     Created on : 04-oct-2018, 21:13:59
-    Author     : Daw2
+    Author     : Ivii
 --%>
 
 <%@page import="java.util.Date"%>
@@ -20,6 +20,7 @@ Sume Reste Multiplique y divida en numeros reales que no deje dividir por cero
     </head>
     <body>
         <h1>Calculadora</h1>
+        <form action="./ControlCalculadora.jsp" method="post">
         <div>
             <p>
                 <label for="nombre">Nombre: </label>
@@ -31,32 +32,10 @@ Sume Reste Multiplique y divida en numeros reales que no deje dividir por cero
             </p>
 
             <%
-
-                String mensaje = "";
-                double valor1 = 0;
-                double valor2 = 0;
-                try {
-                    valor1 = Integer.parseInt(request.getParameter("Valor1"));
-                    valor2 = Integer.parseInt(request.getParameter("Valor2"));
-                } catch (NumberFormatException e) {
-                    mensaje = "Por favor ingrese un numero correcto";
-                } catch (Exception e) {
-                    mensaje = "Error del sistema";
-                }
-                SimpleDateFormat formateador=new SimpleDateFormat("EEEEE, dd 'de' MMMM 'de' yyyy",new Locale("ES"));
+                 SimpleDateFormat formateador=new SimpleDateFormat("EEEEE, dd 'de' MMMM 'de' yyyy",new Locale("ES"));
                 Date fecha=new Date();
                 String fechaActual=formateador.format(fecha);
-                if (request.getParameter("Enviar").equals("Sumar")) {
-                    mensaje = "La Suma da como resultado: " + (valor1 + valor2);
-                } else if (request.getParameter("Enviar").equals("Restar")) {
-                    mensaje = "La Resta da como resultado: " + (valor1 - valor2);
-                } else if (request.getParameter("Enviar").equals("Multiplicar")) {
-                    mensaje = "La Multiplicacion da como resultado: "+(valor1 * valor2);
-                } else if (request.getParameter("Enviar").equals("Dividir")) {
-                    mensaje = "La Division da como resultado: "+(valor1 / valor2);
-                } else {
-                    mensaje = "Error al hacer la cuenta";
-                }
+                String mensaje = (request.getParameter("mensaje") != null ? request.getParameter("mensaje") : "");
             %>
             <p><%= mensaje%></p>
             <p>
@@ -67,6 +46,7 @@ Sume Reste Multiplique y divida en numeros reales que no deje dividir por cero
             </p>
             <p><%= fechaActual%></p>
         </div>
+        </form>
         <a href="<%= request.getContextPath()%>"><input type="submit" name="Enviar" value="Volver"></a>
     </body>
 </html>
