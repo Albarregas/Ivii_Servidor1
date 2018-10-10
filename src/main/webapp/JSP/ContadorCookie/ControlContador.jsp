@@ -37,7 +37,6 @@
             
         } else {
             
-            //NO ME FUNCIONA
             contador = Integer.parseInt(cookie.getValue());
             contador++;
             cookie.setValue(contador + "");
