@@ -11,7 +11,8 @@
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Calendar"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page language="java" contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,10 +20,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <%
 
-
-        %>
 
         <h1>
             <%                String fechaObtenida = request.getParameter("Fecha");
