@@ -23,9 +23,10 @@
             contador = 1;
             cookie = new Cookie("CONTADOR", "" + contador);
             cookie.setMaxAge(-1);
+            cookie.setSecure(false);
+            cookie.setVersion(0);
             response.addCookie(cookie);
-            mensaje = "Nombre:" + cookie.getName() + " Valor: " + cookie.getValue()
-                    + " Ruta: " + cookie.getPath() + " Duracion: " + cookie.getMaxAge() + " Dominio: " + cookie.getDomain();
+            mensaje = "Cookie creada";
         }else if (request.getParameter("Enviar").equals("Eliminar")) {
                 if (cookie != null) {
                     cookie.setMaxAge(0);

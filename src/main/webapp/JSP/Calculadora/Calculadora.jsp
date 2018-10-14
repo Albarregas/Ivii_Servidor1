@@ -23,11 +23,11 @@ Sume Reste Multiplique y divida en numeros reales que no deje dividir por cero
         <form action="./ControlCalculadora.jsp" method="post">
         <div>
             <p>
-                <label for="nombre">Nombre: </label>
+                <label for="Valor1">Valor1: </label>
                 <input id="Valor1" type="text" name="Valor1" value="" placeholder="Valor 1"/>
             </p>
             <p>
-                <label for="valor">Valor: </label>
+                <label for="Valor2">Valor2: </label>
                 <input id="Valor2" type="text" name="Valor2" value="" placeholder="Valor 2"/> 
             </p>
 
